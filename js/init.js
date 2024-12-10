@@ -1,6 +1,7 @@
 import { Categories } from "./categories.js";
 import { Products } from "./products.js";
 import { cart } from "./cart.js";
+import { views } from "./views.js";
 
 /* global $ */
 
@@ -18,12 +19,20 @@ $.get('./home.html', function (data) {
 });
 
 
+// $(function () {
+//     console.log("Document ready, updating cart count...");
+//     cart.updateCartCount(); 
+// });
 
 
 // shorthand for $(document).ready()
 $(function () {
+    // const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    // console.log("Cart Data: ",cartData); 
+    
     loadScript('js/categories.js', categoriesFun);
     loadScript('js/products.js', productsFun);
+    loadScript("js/cart.js",cartFun);
 });
 
 
@@ -34,11 +43,28 @@ var categoriesFun = function () {
     categories.getSingleCategory()
 };
 
+var cartFun=function(){
+    cart.loadCart(); 
+    cart.updateCartCount();
+    let view= new views()
+   view.bindRemoveItem((index) => {
+    cart.removeItem(index); 
+});
+} 
+
 var productsFun = function () {
     let products= new Products()
     products.loadProductDetails();
-    cart.loadCart(); 
-    cart.bindRemoveItem();
+    let view= new views()
+
+products.loadDefaultProducts();
+
+view.bindClearDefault()
+
+// $(".nav-link").on("click", function () {
+//     products.clearDefaultProducts();
+// });
+
 };
 
 function loadScript(url, callback) {

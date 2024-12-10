@@ -6,13 +6,14 @@ export class Products{
 
      constructor() {
         this.apiURL = 'https://fakestoreapi.com/';
-        this.views=new views()
+        this.views=new views(this)
         this.cart=new Cart()
         this.views.bindProductClick((productId) => {
             console.log("Product clicked with ID:", productId);
             window.location.href = `products.html?productId=${productId}`;
 
         });
+        
 
         // this.loadNewestProducts()
         
@@ -66,6 +67,8 @@ export class Products{
             $(".products").addClass("hidden");
             $("#product-details").removeClass("hidden");
 
+            this.cart.updateCartCount()
+
             this.getSingleProduct(productId);
         } else {
             console.error("No product ID found in localStorage.");
@@ -75,6 +78,8 @@ export class Products{
 
     async getSingleProduct(id){
         try {
+
+            this.clearDefaultProducts()
             
             $("#newest-products").empty();
             $(".products").empty();
@@ -113,6 +118,23 @@ export class Products{
                     </button>
                 </div>
             `);
+
+            $("#default-product-list").empty();
+            $("#product-details").empty()
+        $("#default-product-list").append(`
+            <div id="product-details">
+                <img src="${data.image}" alt="${data.title}" style="width: 100%; max-width: 300px;">
+                <h2>${data.title}</h2>
+                <p>${data.description}</p>
+                <p><strong>Price:</strong> $${data.price}</p>
+                <button class="add-to-cart" data-id="${data.id}"
+                data-title="${data.title}" 
+                data-price="${data.price}"
+                data-image="${data.image}">
+                Add to Cart
+                </button>
+            </div>
+        `);
     
             this.views.bindCartClick((product) => {
                 const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -121,6 +143,8 @@ export class Products{
                 alert("Product added to cart!");
                 this.cart.loadCart(); 
             });
+
+            this.cart.updateCartCount()
          
     
         } catch (err) {
@@ -128,5 +152,43 @@ export class Products{
         }
     }
 
+    async loadDefaultProducts() {
+        try {
+            const response = await fetch(this.apiURL + "products");
+            if (!response.ok) {
+                throw new Error("Failed to fetch products");
+            }
+            const products = await response.json();
+    
+            const productList = $("#default-product-list");
+            productList.empty(); 
+    
+            products.forEach(product => {
+                productList.append(`
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.title}">
+                        <h3>${product.title}</h3>
+                        <p>$${product.price}</p>
+                        <button class="view-product"  data-id="${product.id}">View Product</button>
+                    </div>
+                `);
+            });
+    
+            this.views.bindDefaultProductClick(this);
+        } catch (err) {
+            console.error("Failed to load default products:", err);
+        }
+    }
+    
+    clearDefaultProducts() {
+        $("#default-product-list").empty();
+    }
+
+    async fetchProductDetails(id) {
+        const response = await fetch(this.apiURL + "products/" + id);
+        if (!response.ok) throw new Error("Failed to fetch product details");
+        return await response.json();
+      }
+      
     
 }

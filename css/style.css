@@ -1,7 +1,7 @@
 img {
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
+    object-fit: fill;
     padding: 10px 10px 10px 10px;
 }
 
@@ -36,6 +36,7 @@ header .dropdown-menu {
     background-color: #343a40;
     border: none;
 }
+
 
 header .dropdown-menu .dropdown-item {
     color: white;
@@ -84,7 +85,7 @@ footer a:hover {
 .products .product-img {
     width: 250px;
     height: 250px;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -328,7 +329,7 @@ header .dropdown-item:hover {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -439,13 +440,27 @@ footer .newsletter-form button:hover {
     }
 }
 
+
+#logo {
+    height: 150px;
+    max-width: 150px;
+    object-fit: fill;
+    margin-right: 15px;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#logo:hover {
+    transform: scale(1.1);
+}
+
 header a img {
-    height: 50px;
-    max-width: 100px;
+    height: 150px;
+    max-width: 150px;
     object-fit: contain;
     margin-right: 15px;
     border-radius: 5px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 header a img:hover {
@@ -507,7 +522,7 @@ p {
 .dummy-img img {
     width: 30%;
     height: auto;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 8px;
 }
 
@@ -534,7 +549,7 @@ p {
     .dummy-img img {
         width: 30%;
     height: auto;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -603,8 +618,8 @@ footer .footer-section ul li {
 }
 
 footer .social-icons a img {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin: 0 5px;
 }
@@ -630,6 +645,26 @@ footer .newsletter-form button:hover {
     background-color: #0056b3;
 }
 
+#cartItems {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+#cartItems > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+#cartItems > div:last-child {
+    border-bottom: none;
+}
 
 .cart-item {
     display: flex;
@@ -638,9 +673,9 @@ footer .newsletter-form button:hover {
 }
 
 .cart-item-image {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
     border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -650,7 +685,54 @@ footer .newsletter-form button:hover {
     flex-grow: 1; 
 }
 
+#cartItems p {
+    flex-grow: 1;
+    margin: 0 15px;
+    font-size: 16px;
+    color: #333;
+}
 
+.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-quantity {
+    text-align: center;
+    font-size: 14px;
+    width: 50px;
+}
+
+.remove-item {
+    margin-left: 20px;
+}
+
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    #cartItems > div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-image {
+        margin-bottom: 10px;
+    }
+
+    .remove-item {
+        margin-left: 0;
+    }
+
+    #totalPrice {
+        text-align: left;
+    }
+}
 
 #loginForm {
     background: #fff;
@@ -750,3 +832,263 @@ form button:hover {
     color: red;
 }
 
+
+#default-product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 50%; 
+    height: 200px; 
+    object-fit: fill; 
+    border-bottom: 1px solid #ddd;
+}
+
+.product-card p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product-card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #0056b3;
+}
+
+#product-details {
+    margin: 20px;
+    text-align: left;
+}
+
+
+#product-details {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.product-card button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background-color: #0056b3;
+}
+
+
+.modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  #productDetailModal .modal-body img {
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .cart-item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  input[type="number"] {
+    text-align: center;
+  }
+
+  #cartCount {
+    font-size: 0.75rem;
+    padding: 0.25em 0.5em;
+    border-radius: 50%;
+    margin-left: 0.5em;
+}
+
+
+.about {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about h5 {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+}
+  
+.contact {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact h5 {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.contact a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+.contact p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.privacy {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.privacy h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.privacy ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.privacy li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.privacy li::before {
+    content: "✔️";
+    color: #2ecc71;
+    margin-right: 10px;
+}
+
+.privacy li:last-child {
+    margin-bottom: 0;
+}
+
+.terms {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+}
+
+.terms h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.terms p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.terms p:last-child {
+    margin-bottom: 0;
+}

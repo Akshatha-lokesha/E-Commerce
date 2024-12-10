@@ -9,7 +9,7 @@
     <header class="p-3 bg-dark text-white">
         <div class="container-fluid">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"><img alt="" src="assests/images/logos.png"></a>
+                <a href="#" class="logo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"><img id="logo" alt="" src="assests/images/logos.png"></a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li class="nav-items">
                         <a href="home.html" class="nav-link text-white">Home</a>
@@ -20,14 +20,14 @@
                         aria-expanded="false">Store</a>
                         <div class=" dropdown-menu categories" aria-labelledby="navbarDropdown"></div>
                     </li>
-                    <li class="nav-items">
+                    <!-- <li class="nav-items">
                         <a href="register.html" class="nav-link text-white">Register</a>
+                    </li> -->
+                    <li class="nav-items">
+                        <a href="login.html" class="nav-link text-white">LogOut</a>
                     </li>
                     <li class="nav-items">
-                        <a href="login.html" class="nav-link text-white">Login</a>
-                    </li>
-                    <li class="nav-items">
-                        <a href="cart.html" class="nav-link text-white">Cart</a>
+                        <a href="cart.html" class="nav-link text-white">Cart<span id="cartCount" class="badge bg-danger">0</span></a>
                     </li>
                 </ul>
             </div>

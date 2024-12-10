@@ -20,6 +20,40 @@
 
         <!-- <div id="content-placeholder"></div> -->
 
+
+        <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="productDetailModalLabel">Product Details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img id="modal-product-image" class="img-fluid" alt="Product Image">
+                    </div>
+                    <div class="col-md-8">
+                      <h4 id="modal-product-title"></h4>
+                      <p id="modal-product-description"></p>
+                      <h5 id="modal-product-price"></h5>
+                      <div class="d-flex align-items-center">
+                        <button id="decrease-quantity" class="btn btn-sm btn-secondary">-</button>
+                        <input type="number" id="modal-product-quantity" value="1" min="1" class="form-control w-25 mx-2">
+                        <button id="increase-quantity" class="btn btn-sm btn-secondary">+</button>
+                      </div>
+                      <button id="add-to-cart" class="btn btn-primary mt-3">Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        <div id="default-product-list" class="row"></div>
+
         <div class="container-fluid"></div>
 
         <div id="newest-products" class="row visible"></div>
@@ -28,7 +62,7 @@
         <div class="products row hidden"></div>
 
         
-        <div id="product-details" class="row hidden">
+        <!-- <div id="product-details" class="row hidden">
             <div class="col">
                 <div class="product">
                     <div class="img">
@@ -41,7 +75,7 @@
                 <h2 class="product_price"></h2>
                 <div class="product_description"></div>
             </div>
-        </div>
+        </div> -->
 
 
         <div id="footer-placeholder">footer</div>

@@ -5,6 +5,7 @@ class Register {
         this.registerMessage = $('#registerMessage');
         this.views = new views();
         this.views.bindRegisterSubmit(this.handleSubmit.bind(this));
+        //bind(this) referes to thr instance of register class...and not anyother instances
     }
 
     handleSubmit(username, password) {
